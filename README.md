@@ -125,7 +125,7 @@ Example TensorBoard outputs are like:
 ![TensorBoard](./assets/TensorBoard.png)
 
 ## Benchmark
-You can use the `run_SiamFC.py` in `benchmarks` directory to integrate with the OTB evaluation toolkit.
+You can use the `run_SiamFC.py` in `benchmarks` directory to integrate with the OTB evaluation toolkit. The OTB toolkit has been ported to python. The original version is [here](https://github.com/jwlim/tracker_benchmark). However, you may want to use my [custom version](https://github.com/bilylee/tracker_benchmark) where several bugs are fixed. 
 
 ## License
 SiamFC-TensorFlow is released under the MIT License (refer to the LICENSE file for details).
