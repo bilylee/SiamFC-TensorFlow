@@ -96,7 +96,8 @@ class Dataset:
     #               |- 000045.00.crop.x.jpg
     #               |- 000046.00.crop.x.jpg
     #               |- ...
-    train_dirs = os.listdir(os.path.join(ann_dir, 'train'))
+    listdirsonly = lambda d:[o for o in os.listdir(d) if os.path.isdir(os.path.join(d, o))]
+    train_dirs = listdirsonly(os.path.join(ann_dir, 'train'))
     for dir_ in train_dirs:
       train_sub_dir = os.path.join(ann_dir, 'train', dir_)
       video_names = os.listdir(train_sub_dir)

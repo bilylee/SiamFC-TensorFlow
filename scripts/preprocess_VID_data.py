@@ -58,7 +58,6 @@ def process_split(root_dir, save_dir, split, subdir='', ):
 
       # Read image
       img_file = osp.join(data_dir, folder, filename + '.JPEG')
-      img = None
 
       # Get all object bounding boxes
       bboxs = []
@@ -81,8 +80,10 @@ def process_split(root_dir, save_dir, split, subdir='', ):
         savename = osp.join(track_save_dir, '{}.{:02d}.crop.x.jpg'.format(filename, int(id)))
         if osp.isfile(savename): continue  # skip existing images
 
-        if img is None:
+        if os.path.isfile(img_file):
           img = imread(img_file)
+        else:
+          assert (False), "Image file: {} not exists...".format(img_file)
 
         # Get crop
         target_box = convert_bbox_format(Rectangle(*bboxs[idx]), 'center-based')
