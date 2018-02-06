@@ -80,6 +80,7 @@ def get_crops(im, bbox, size_z, size_x, context_amount):
     s -> scale factor s is chosen such that the area of the scaled rectangle is equal to a constant 
     (w, h) -> tight bbox size
     p -> the amount of context to be half of the mean dimension p = (w+h)/4 in origin paper
+  We call this function ONLY in dataset curation.
 
   Args:
     im: Image ndarray
