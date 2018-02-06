@@ -76,6 +76,11 @@ def get_crops(im, bbox, size_z, size_x, context_amount):
 
   Adapted from https://github.com/bertinetto/siamese-fc/blob/master/ILSVRC15-curation/save_crops.m#L46
 
+  The mathematical formula is $s(w+2p) * s(h+2p) = A$, here you should be aware that
+    s -> scale factor s is chosen such that the area of the scaled rectangle is equal to a constant 
+    (w, h) -> tight bbox size
+    p -> the amount of context to be half of the mean dimension p = (w+h)/4 in origin paper
+
   Args:
     im: Image ndarray
     bbox: Named tuple (x, y, width, height) x, y corresponds to the crops center
