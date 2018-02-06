@@ -23,7 +23,8 @@ CURRENT_DIR = osp.dirname(__file__)
 ROOT_DIR = osp.join(CURRENT_DIR, '..')
 sys.path.append(ROOT_DIR)
 
-from utils.infer_utils import get_crops, Rectangle, convert_bbox_format
+from utils.infer_utils import Rectangle, convert_bbox_format
+from utils.curation_utils import get_crops
 from utils.misc_utils import mkdir_p
 
 
