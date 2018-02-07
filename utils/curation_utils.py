@@ -99,3 +99,17 @@ def get_subwindow_avg(im, pos, model_sz, original_sz):
   else:
     im_patch = im_patch_original
   return im_patch, left_pad, top_pad, right_pad, bottom_pad
+
+
+if __name__ == "__main__":
+  im = imread('../tests/01.jpg')
+  im_crop_x, scale_x = get_crops(im, Rectangle(372, 199, 114, 116), 127, 255, 0.5)
+  im_w_rectangle = cv2.rectangle(im, (315, 141), (429, 257), (255, 0, 0))
+  #cv2.imshow('test.jpg', im_w_rectangle)
+  print("scale_x is {}".format(scale_x))
+  print(im_crop_x.shape)
+  cv2.imshow("im_crop_x.jpg", im_crop_x)
+  #cv2.imshow('im_crop_x', im_crop_x)
+  cv2.waitKey(0)
+
+
