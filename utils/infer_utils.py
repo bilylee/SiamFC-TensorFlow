@@ -21,11 +21,12 @@ from cv2 import resize
 
 from utils.misc_utils import get_center
 
+"""Notice in Rectangle namedtuple object, x and y can be top-left or center"""
 Rectangle = collections.namedtuple('Rectangle', ['x', 'y', 'width', 'height'])
 
 
 def im2rgb(im):
-  if len(im.shape) != 3:
+  if len(im.shape) != 3 and len(im.shape) == 1:
     im = np.stack([im, im, im], -1)
   return im
 
