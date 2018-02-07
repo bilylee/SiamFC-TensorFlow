@@ -71,3 +71,29 @@ def get_exemplar_images(images, exemplar_size, targets_pos=None):
     exemplar_img.set_shape([batch_size, z_height, z_width, 3])
     return exemplar_img
 
+
+if __name__ == "__main__":
+  import matplotlib.pyplot as plt
+  # Get one 255x255 search demo image
+  search_image = tf.image.decode_jpeg(tf.read_file("000000.00.crop.x.jpg"),
+                                      channels=3, dct_method="INTEGER_ACCURATE")
+  search_image = tf.to_float(search_image)
+  search_image = tf.expand_dims(search_image, 0)
+
+  search_image_ph = tf.placeholder(tf.float32, shape=(1, 255, 255, 3))
+  exemplar_image = get_exemplar_images(search_image_ph, [127, 127])
+
+  with tf.Session() as sess:
+    simage = sess.run(search_image)
+    exemplar_image = sess.run(exemplar_image, feed_dict={search_image_ph: simage})
+    simage, exemplar_image = tf.squeeze(simage).eval() * 255, tf.squeeze(exemplar_image).eval() * 255
+
+    print (exemplar_image.shape)
+    print (simage.shape)
+
+    # Draw our exemplar image
+    plt.figure(1)
+    plt.imshow(exemplar_image)
+    plt.figure(2)
+    plt.imshow(simage)
+    plt.show()
