@@ -111,7 +111,7 @@ class InferenceWrapper():
     target_size = self.target_bbox_feed[2:4]
     avg_chan = tf.reduce_mean(self.image, axis=(0, 1), name='avg_chan')
 
-    # Compute base values
+    # Compute base values, here is the same producer as generating search images in `curation_utils.py`
     base_z_size = target_size
     base_z_context_size = base_z_size + context_amount * tf.reduce_sum(base_z_size)
     base_s_z = tf.sqrt(tf.reduce_prod(base_z_context_size))  # Canonical size
@@ -121,6 +121,7 @@ class InferenceWrapper():
     base_s_x = base_s_z + 2 * base_pad
     base_scale_x = tf.div(tf.to_float(size_x), base_s_x)
 
+    # Get bboxes in topleft-bottomright format at different scales
     boxes = []
     for factor in search_factors:
       s_x = factor * base_s_x
