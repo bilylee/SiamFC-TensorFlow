@@ -127,5 +127,39 @@ Example TensorBoard outputs are like:
 ## Benchmark
 You can use the `run_SiamFC.py` in `benchmarks` directory to integrate with the OTB evaluation toolkit. The OTB toolkit has been ported to python. The original version is [here](https://github.com/jwlim/tracker_benchmark). However, you may want to use my [custom version](https://github.com/bilylee/tracker_benchmark) where several bugs are fixed. 
 
+Assume that you have followed the steps in `Tracking` or `Training` section and now have a pretrained/trained-from-scratch model to evaluate. To integrate with the evaluation toolkit, 
+```bash
+# Let's follow this directory structure
+# Your-Workspace-Directory
+#         |- SiamFC-TensorFlow
+#         |- tracker_benchmark
+#         |- ...
+# 0. Go to your workspace directory
+cd /path/to/your/workspace
+
+# 1. Download the OTB toolkit
+git clone https://github.com/bilylee/tracker_benchmark.git
+
+# 2. Modify line 22 and 25 in SiamFC-TensorFlow/benchmarks/run_SiamFC.py accordingly. 
+# In Linux, you can simply run
+sed -i "s+/path/to/SiamFC-TensorFlow+`realpath SiamFC-TensorFlow`+g" SiamFC-TensorFlow/benchmarks/run_SiamFC.py
+
+# 3. Copy run_SiamFC.py to the evaluation toolkit
+cp SiamFC-TensorFlow/benchmarks/run_SiamFC.py tracker_benchmark/scripts/bscripts
+
+# 4. Add the tracker to the evaluation toolkit list
+echo "\nfrom run_SiamFC import *" >> tracker_benchmark/scripts/bscripts/__init__.py
+
+# 5. Create tracker directory in the evaluation toolkit
+mkdir tracker_benchmark/trackers/SiamFC
+
+# 6. Start evaluation (it will take some time to download test sequences).
+echo "tb100" | python tracker_benchmark/run_trackers.py -t SiamFC -s tb100 -e OPE
+
+# 7. Get the AUC score
+sed -i "s+tb50+tb100+g" tracker_benchmark/draw_graph.py
+python tracker_benchmark/draw_graph.py
+```
+
 ## License
 SiamFC-TensorFlow is released under the MIT License (refer to the LICENSE file for details).
