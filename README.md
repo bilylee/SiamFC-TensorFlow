@@ -23,6 +23,7 @@ In a computer with a `GeForce GTX 1080` GPU, the main results on OTB-100 are in 
 Qualitative results:
 
 ![Qualitative_results](./assets/results.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbilylee%2FSiamFC-TensorFlow.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbilylee%2FSiamFC-TensorFlow?ref=badge_shield)
 
 ## Prerequisite
 The main requirements can be installed by:
@@ -163,3 +164,5 @@ python tracker_benchmark/draw_graph.py
 
 ## License
 SiamFC-TensorFlow is released under the MIT License (refer to the LICENSE file for details).
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbilylee%2FSiamFC-TensorFlow.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbilylee%2FSiamFC-TensorFlow?ref=badge_large)
