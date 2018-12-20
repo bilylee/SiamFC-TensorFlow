@@ -17,8 +17,8 @@ In a computer with a `GeForce GTX 1080` GPU, the main results on OTB-100 are in 
 
 |                   | Reported (AUC)     | Pretrained (AUC)       | Train from scratch (AUC)  | Training time | Tracking time|
 |-------------------|:-------------------:|:---------------------:|:-----:|:--------------:|:------------------:|
-|SiamFC-3s-color  | --                      | 0.575        | 0.580            | ~5h        | ~120fps            |
-|SiamFC-3s-gray   | 0.582                   | 0.584        | 0.571            | ~5h        | ~120fps            |
+|SiamFC-3s-color  | --                      | 0.578        | 0.584            | ~5h        | ~120fps            |
+|SiamFC-3s-gray   | 0.582                   | 0.587        | 0.573            | ~5h        | ~120fps            |
 
 Qualitative results:
 
