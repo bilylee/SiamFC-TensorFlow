@@ -193,8 +193,8 @@ class InferenceWrapper():
 
       output = tf.map_fn(
         lambda x: _translation_match(x[0], x[1]),
-        (self.embeds, self.templates), dtype=self.embeds.dtype)  # of shape [16, 1, 17, 17, 1]
-      output = tf.squeeze(output, [1, 4])  # of shape e.g. [16, 17, 17]
+        (self.embeds, self.templates), dtype=self.embeds.dtype)  # of shape [3, 1, 17, 17, 1]
+      output = tf.squeeze(output, [1, 4])  # of shape e.g. [3, 17, 17]
 
       bias = tf.get_variable('biases', [1],
                              dtype=tf.float32,
