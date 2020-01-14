@@ -43,7 +43,7 @@ pip install tensorflow-gpu  # For GPU
 pip install scipy
 
 # 3. Install sacred for experiments logging
-pip install sacred
+pip install sacred==0.7.5
 
 # 4. Install matplotlib for visualizing tracking results
 pip install matplotlib
